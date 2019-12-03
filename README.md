@@ -5,3 +5,5 @@ lookup data, and update data
 in the database Movies with 
 tables Directors, Movies, and Actors
 by utilizing SQL queries
+
+Runs on GoormIDE
