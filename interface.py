@@ -1,7 +1,7 @@
 #Author:
 #Jordan Sze
 
-#Professor provided general template
+#Professor Alvin Lam provided general template
 
 import pymysql
 
