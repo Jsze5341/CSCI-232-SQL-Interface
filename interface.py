@@ -1,6 +1,8 @@
 #Author:
 #Jordan Sze
 
+#Professor provided general template
+
 import pymysql
 
 host = "localhost" 
