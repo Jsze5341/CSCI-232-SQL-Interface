@@ -161,7 +161,7 @@ def insert():
 def lookupOne():
     ask_lookup = input("\nWhich table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     while ask_lookup != "Directors" and ask_lookup != "Movies" and ask_lookup != "Actors":
-        print("Faulty input, try again\n")
+        print("\nFaulty input, try again\n")
         ask_lookup = input("Which table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     
     #Prompts the user for a value
@@ -218,7 +218,7 @@ def lookupAll():
     #until a valid table name is inputted
     ask_lookupall = input("\nWhich table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     while ask_lookupall != "Directors" and ask_lookupall != "Movies" and ask_lookupall != "Actors":
-        print("Faulty input, try again\n")
+        print("\nFaulty input, try again\n")
         ask_lookupall = input("Which table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     
     i = 0    
@@ -320,7 +320,7 @@ def delete():
             else:
                 print("Deleted " + str(delete_movies) + " rows")
         else:
-            print("Faulty input\n")
+            print("\nFaulty input\n")
     
     #If the table requested is Actors,
     #prompts user for value to delete
@@ -363,7 +363,7 @@ def update():
     #until a valid table name is inputted
     ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     while ask_table != "Directors" and ask_table != "Movies" and ask_table != "Actors":
-        print("Faulty input, try again\n")
+        print("\nFaulty input, try again\n")
         ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     
     #If selected table is Directors...
