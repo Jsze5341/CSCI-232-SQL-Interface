@@ -263,7 +263,7 @@ def delete():
     #prompts user for value to delete
     #and deletes tuples with inputted value
     if ask_table == "Directors":
-        ask_delete_directors = input("\nWhat do you want to delete? (name, age, or awards)\n ")
+        ask_delete_directors = input("\nWhat do you want to delete? (name, age, or awards)\n")
         #If requested value to delete is name
         if ask_delete_directors == "name" or ask_delete_directors == "Name":
             director_value = input("Enter name to be deleted: ")
@@ -294,7 +294,7 @@ def delete():
     #prompts user for value to delete
     #and deletes tuples with inputted value  
     elif ask_table == "Movies":
-        ask_delete_movies = input("\nWhat do you want to delete? (title, year, or rating)\n ")
+        ask_delete_movies = input("\nWhat do you want to delete? (title, year, or rating)\n")
         #If requested value to delete is title
         if ask_delete_movies == "title" or ask_delete_movies == "Title":
             movie_value = input("Enter title to be deleted: ")
@@ -326,7 +326,7 @@ def delete():
     #prompts user for value to delete
     #and deletes tuples with inputted value   
     elif ask_table == "Actors":
-        ask_delete_actors = input("\nWhat do you want to delete? (name, age, or awards)\n ")
+        ask_delete_actors = input("\nWhat do you want to delete? (name, age, or awards)\n")
         #If requested value to delete is name
         if ask_delete_actors == "name" or ask_delete_actors == "Name":
             actor_value = input("Enter name to be deleted: ")
@@ -481,6 +481,7 @@ def deleteall():
                 pass
         else:
             pass
+        
     #If the table requested is Movies,
     #prompts user for confirmation 
     #and then deletes all its data 
@@ -499,6 +500,7 @@ def deleteall():
                 pass
         else:
             pass
+        
     #If the table requested is Actors,
     #prompts user for confirmation 
     #and then deletes all its data   
