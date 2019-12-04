@@ -159,12 +159,15 @@ def insert():
     
 #Looks up specific data values in requested tables
 def lookupOne():
-    #Prompts the user if they want to look up an entry in Directors
-    ask_lookup_directors = input("\nDo you want to look up an entry in Directors? (Enter Yes/Y for Yes or any other character for No)\n")
+    ask_lookup = input("\nWhich table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
+    while ask_lookup != "Directors" and ask_lookup != "Movies" and ask_lookup != "Actors":
+        print("Faulty input, try again\n")
+        ask_lookup = input("Which table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     
-    #If yes then executes look up,
-    #otherwise skips look up for directors
-    if ask_lookup_directors == "Yes" or ask_lookup_directors == "Y" or ask_lookup_directors == "yes" or ask_lookup_directors == "y":
+    #Prompts the user for a value
+    #to look up in Directors and prints
+    #any found tuples with inputted value
+    if ask_lookup == "Directors":
         lookup_directors = input("Which entry do you want to look up in Directors? (Enter a name)\n")
         directors_tuple = databaseFetchOne("SELECT * FROM Directors WHERE name = " + "\'" + lookup_directors + "\'")
         #If input not found in Directors, prints not found
@@ -172,17 +175,15 @@ def lookupOne():
         if directors_tuple == None:
             print(lookup_directors + " not found in Directors")
         else:
-            print(directors_tuple[0], directors_tuple[1], directors_tuple[2])
-    
-    else:
-        pass
+            print("(name, age, awards)")
+            print("(", directors_tuple[0], ",", directors_tuple[1], ",", directors_tuple[2], ")")
+            pass
         
-    #Prompts the user if they want to look up an entry in Movies   
-    ask_lookup_movies = input("\nDo you want to look up an entry in Movies? (Enter Yes/Y for Yes or any other character for No)\n")
     
-    #If yes then executes look up,
-    #otherwise skips look up for movies
-    if ask_lookup_movies == "Yes" or ask_lookup_movies == "Y" or ask_lookup_movies == "yes" or ask_lookup_movies == "y":
+    #Prompts the user for a value
+    #to look up in Movies and prints
+    #any found tuples with inputted value
+    if ask_lookup == "Movies":
         lookup_movies = input("Which entry do you want to look up in Movies? (Enter a title)\n")
         movies_tuple = databaseFetchOne("SELECT * FROM Movies WHERE title = " + "\'" + lookup_movies + "\'")
         #If input not found in Movies, prints not found
@@ -190,17 +191,14 @@ def lookupOne():
         if movies_tuple == None:
             print(lookup_movies + " not found in Movies")
         else:
-            print(movies_tuple[0], movies_tuple[1], movies_tuple[2])
-        
-    else:
-        pass
-     
-    #Prompts the user if they want to look up an entry in Actors 
-    ask_lookup_actors = input("\nDo you want to look up an entry in Actors? (Enter Yes/Y for Yes or any other character for No)\n")
+            print("(title, year, rating)")
+            print("(", movies_tuple[0], ",", movies_tuple[1], ",", movies_tuple[2], ")")
+            pass
     
-    #If yes then executes look up,
-    #otherwise skips look up for actors
-    if ask_lookup_actors == "Yes" or ask_lookup_actors == "Y" or ask_lookup_actors== "yes" or ask_lookup_actors == "y":
+    #Prompts the user for a value
+    #to look up in Actors and prints
+    #any found tuples with inputted value
+    if ask_lookup== "Actors":
         lookup_actors = input("Which entry do you want to look up in Actors? (Enter a name)\n")
         actors_tuple = databaseFetchOne("SELECT * FROM Actors WHERE name = " + "\'" + lookup_actors + "\'")
         #If input not found in Actors, prints not found
@@ -208,10 +206,10 @@ def lookupOne():
         if actors_tuple == None:
             print(lookup_actors + " not found in Actors")
         else:
-            print(actors_tuple[0], actors_tuple[1], actors_tuple[2])
+            print("(name, age, gender)")
+            print("(", actors_tuple[0], ",", actors_tuple[1], ",", actors_tuple[2], ")")
+            pass
         
-    else:
-        pass
 
 #Looks up all the data of the requested table
 def lookupAll():
@@ -371,7 +369,7 @@ def update():
     #If selected table is Directors...
     if ask_table == "Directors":
         #Prompts user for what value to update
-        lookfor = input("\nWhat value would you like to update? (any value in Directors)\n ")
+        lookfor = input("\nWhat value would you like to update? (any value in Directors)\n")
         
         #If inputted value exists in name, alters rows
         if(databaseRunQuery("SELECT * FROM Directors WHERE name = \"" + lookfor + "\"")):
@@ -398,7 +396,7 @@ def update():
     #If selected table is Movies...
     elif ask_table == "Movies":
         #Prompts user what value to update
-        lookfor = input("\nWhat value would you like to update? (any value in Movies)\n ")
+        lookfor = input("\nWhat value would you like to update? (any value in Movies)\n")
         
         #If inputted value exists in title, alters rows
         #otherwise prints cannot find inputted value
@@ -427,7 +425,7 @@ def update():
     #If selected table is Actors...
     elif ask_table == "Actors":
         #Prompts user for what value to update
-        lookfor = input("\nWhat value would you like to update? (any value in Actors)\n ")
+        lookfor = input("\nWhat value would you like to update? (any value in Actors)\n")
         
         #If inputted value exists in name, alters rows
         #otherwise prints cannot find inputted value
@@ -454,7 +452,8 @@ def update():
                 
     else:
         print("\nFaulty input\n")
-        
+
+#Deletes all data of requested table
 def deleteall():
     #Prompts the user which table to select
     #If the input is not a table, repeats
@@ -465,13 +464,13 @@ def deleteall():
         ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
         
     #If the table requested is Directors,
-    #prompts user for value to delete
-    #and deletes tuples with inputted value
+    #prompts user for confirmation 
+    #and then deletes all its data
     if ask_table == "Directors":
-        ask_delete_directors = input("\nDelete all data in Directors? (Enter Yes/Y for Yes or any other character for No)\n ")
+        ask_delete_directors = input("\nDelete all data in Directors? (Enter Yes/Y for Yes or any other character for No)\n")
         #If requested value to delete is name
         if ask_delete_directors == "Yes" or ask_delete_directors == "Y" or ask_delete_directors == "yes" or ask_delete_directors == "y":
-            delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)")
+            delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
             if delete_confirmation == "Yes" or delete_confirmation == "Y" or delete_confirmation == "yes" or delete_confirmation == "y":
                 delete_directors = databaseRunQuery("DELETE FROM Directors")
                 if(delete_directors == 0): 
@@ -483,13 +482,13 @@ def deleteall():
         else:
             pass
     #If the table requested is Movies,
-    #prompts user for value to delete
-    #and deletes tuples with inputted value  
+    #prompts user for confirmation 
+    #and then deletes all its data 
     if ask_table == "Movies":
-        ask_delete_movies = input("\nDelete all data in Movies? (Enter Yes/Y for Yes or any other character for No)\n ")
+        ask_delete_movies = input("\nDelete all data in Movies? (Enter Yes/Y for Yes or any other character for No)\n")
         #If requested value to delete is name
         if ask_delete_movies == "Yes" or ask_delete_movies == "Y" or ask_delete_movies == "yes" or ask_delete_movies == "y":
-            delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)")
+            delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
             if delete_confirmation == "Yes" or delete_confirmation == "Y" or delete_confirmation == "yes" or delete_confirmation == "y":
                 delete_movies = databaseRunQuery("DELETE FROM Movies")
                 if(delete_dmovies == 0): 
@@ -501,13 +500,13 @@ def deleteall():
         else:
             pass
     #If the table requested is Actors,
-    #prompts user for value to delete
-    #and deletes tuples with inputted value   
+    #prompts user for confirmation 
+    #and then deletes all its data   
     if ask_table == "Actors":
-        ask_delete_actors = input("\nDelete all data in Actors? (Enter Yes/Y for Yes or any other character for No)\n ")
+        ask_delete_actors = input("\nDelete all data in Actors? (Enter Yes/Y for Yes or any other character for No)\n")
         #If requested value to delete is name
         if ask_delete_actors == "Yes" or ask_delete_actors == "Y" or ask_delete_actors == "yes" or ask_delete_actors == "y":
-            delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)")
+            delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
             if delete_confirmation == "Yes" or delete_confirmation == "Y" or delete_confirmation == "yes" or delete_confirmation == "y":
                 delete_actors = databaseRunQuery("DELETE FROM Actors")
                 if(delete_actors == 0): 
@@ -526,9 +525,9 @@ while(1):
                  "1. Insert\n"\
                  "2. Update\n"\
                  "3. Lookup by Name/Title\n"\
-                 "4. Lookup all data of one table\n"\
-                 "5. Delete\n"\
-                 "6. Delete all from one table\n"\
+                 "4. Lookup all data\n"\
+                 "5. Delete value\n"\
+                 "6. Delete all data\n"\
                 "Please enter a command, type q or quit to exit.\n"
 	
         choice = input(prompt)
