@@ -492,7 +492,7 @@ def deleteall():
             delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
             if delete_confirmation == "Yes" or delete_confirmation == "Y" or delete_confirmation == "yes" or delete_confirmation == "y":
                 delete_movies = databaseRunQuery("DELETE FROM Movies")
-                if(delete_dmovies == 0): 
+                if(delete_movies == 0): 
                     print("Found nothing to delete")
                 else:
                     print("Deleted data from Movies")
