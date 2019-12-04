@@ -83,7 +83,7 @@ def insert():
         
         #Runs insert query Directors and prints the data that is inputted
         databaseRunQuery("INSERT INTO Directors VALUES (\'" + director_name + "\'" + ',' + director_age + ',' + "\'" + director_awards + "\'" + ");")
-        print("Created new row data for table Directors: " + insert_directors)
+        print("\nCreated new row data for table Directors: " + insert_directors)
             
     else:
         pass
@@ -118,7 +118,7 @@ def insert():
             
         #Runs insert query Movies and prints the data that is inputted
         databaseRunQuery("INSERT INTO Movies VALUES (\'" + movie_title + "\'" +  ',' + movie_year + ',' + movie_rating + ");")
-        print("Created new row data for table Movies: " + insert_movies)
+        print("\nCreated new row data for table Movies: " + insert_movies)
             
     else:
         pass
@@ -130,7 +130,7 @@ def insert():
     #otherwise skips insert for Actors
     if ask_insert_actors  == "Yes" or ask_insert_actors  == "Y" or ask_insert_actors  == "yes" or ask_insert_actors == "y":
         #Input actor data
-        insert_actors = input("\nInput actor name, age, gender (separated by space): ")
+        insert_actors = input("\nInput actor name, age, and gender (separated by space): ")
 
         #Parses actor data input
         actors_data = insert_actors.split(" ")
@@ -152,7 +152,7 @@ def insert():
             
         #Runs insert query Actors and prints the data that is inputted
         databaseRunQuery("INSERT INTO Actors VALUES (\'" + actor_name + "\'" + ',' + actor_age + ',' + "\'" + actor_gender + "\'" + ");") 
-        print("Created new row data for table Actors: " + insert_actors)
+        print("\nCreated new row data for table Actors: " + insert_actors)
         
     else:
         pass  
@@ -161,8 +161,12 @@ def insert():
 def lookupOne():
     ask_lookup = input("\nWhich table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     while ask_lookup != "Directors" and ask_lookup != "Movies" and ask_lookup != "Actors":
-        print("\nFaulty input, try again\n")
-        ask_lookup = input("Which table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
+        if ask_lookup == "q" or ask_lookup == "quit" or ask_lookup == "exit":
+            con.commit()
+            break
+        else:
+            print("\nFaulty input, try again\n")
+            ask_lookup = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     
     #Prompts the user for a value
     #to look up in Directors and prints
@@ -218,8 +222,12 @@ def lookupAll():
     #until a valid table name is inputted
     ask_lookupall = input("\nWhich table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
     while ask_lookupall != "Directors" and ask_lookupall != "Movies" and ask_lookupall != "Actors":
-        print("\nFaulty input, try again\n")
-        ask_lookupall = input("Which table do you want to look up? \nDirectors\nMovies\nActors:\n\n")
+        if ask_lookupall == "q" or ask_lookupall == "quit" or ask_lookupall == "exit":
+            con.commit()
+            break
+        else:
+            print("\nFaulty input, try again\n")
+            ask_lookupall = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     
     i = 0    
     #If the table requested is Directors,
@@ -256,8 +264,12 @@ def delete():
     #until a valid table name is inputted
     ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     while ask_table != "Directors" and ask_table != "Movies" and ask_table != "Actors":
-        print("\nFaulty input, try again\n")
-        ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
+        if ask_table == "q" or ask_table == "quit" or ask_table == "exit":
+            con.commit()
+            break
+        else:
+            print("\nFaulty input, try again\n")
+            ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
         
     #If the table requested is Directors,
     #prompts user for value to delete
@@ -363,8 +375,12 @@ def update():
     #until a valid table name is inputted
     ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     while ask_table != "Directors" and ask_table != "Movies" and ask_table != "Actors":
-        print("\nFaulty input, try again\n")
-        ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
+        if ask_table == "q" or ask_table == "quit" or ask_table == "exit":
+            con.commit()
+            break
+        else:
+            print("\nFaulty input, try again\n")
+            ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     
     #If selected table is Directors...
     if ask_table == "Directors":
@@ -457,8 +473,6 @@ def update():
         else:
             print("\nCould not find " + lookfor + "\n")
                 
-    else:
-        print("\nFaulty input\n")
 
 #Deletes all data of requested table
 def deleteall():
@@ -467,8 +481,12 @@ def deleteall():
     #until a valid table name is inputted
     ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
     while ask_table != "Directors" and ask_table != "Movies" and ask_table != "Actors":
-        print("\nFaulty input, try again\n")
-        ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
+        if ask_table == "q" or ask_table == "quit" or ask_table == "exit":
+            con.commit()
+            break
+        else:
+            print("\nFaulty input, try again\n")
+            ask_table = input("\nWhich table do you want to select? \nDirectors\nMovies\nActors:\n\n")
         
     #If the table requested is Directors,
     #prompts user for confirmation 
