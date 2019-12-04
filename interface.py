@@ -168,7 +168,7 @@ def lookupOne():
     #to look up in Directors and prints
     #any found tuples with inputted value
     if ask_lookup == "Directors":
-        lookup_directors = input("Which entry do you want to look up in Directors? (Enter a name)\n")
+        lookup_directors = input("\nWhich entry do you want to look up in Directors? (Enter a name)\n")
         directors_tuple = databaseFetchOne("SELECT * FROM Directors WHERE name = " + "\'" + lookup_directors + "\'")
         #If input not found in Directors, prints not found
         #otherwise prints the tuple of the input
@@ -184,7 +184,7 @@ def lookupOne():
     #to look up in Movies and prints
     #any found tuples with inputted value
     if ask_lookup == "Movies":
-        lookup_movies = input("Which entry do you want to look up in Movies? (Enter a title)\n")
+        lookup_movies = input("\nWhich entry do you want to look up in Movies? (Enter a title)\n")
         movies_tuple = databaseFetchOne("SELECT * FROM Movies WHERE title = " + "\'" + lookup_movies + "\'")
         #If input not found in Movies, prints not found
         #otherwise prints the tuple of the input
@@ -199,7 +199,7 @@ def lookupOne():
     #to look up in Actors and prints
     #any found tuples with inputted value
     if ask_lookup== "Actors":
-        lookup_actors = input("Which entry do you want to look up in Actors? (Enter a name)\n")
+        lookup_actors = input("\nWhich entry do you want to look up in Actors? (Enter a name)\n")
         actors_tuple = databaseFetchOne("SELECT * FROM Actors WHERE name = " + "\'" + lookup_actors + "\'")
         #If input not found in Actors, prints not found
         #otherwise prints the tuple of the input
