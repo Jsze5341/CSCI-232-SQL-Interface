@@ -372,18 +372,21 @@ def update():
         lookfor = input("\nWhat value would you like to update? (any value in Directors)\n")
         
         #If inputted value exists in name, alters rows
+        #and prints how many rows were altered
         if(databaseRunQuery("SELECT * FROM Directors WHERE name = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Directors SET name = \"" + updateto + "\" WHERE name = \"" + lookfor + "\"")
             print("Altered " + str(result) + " rows!")
             
         #If inputted value exists in age, alters rows
+        #and prints how many rows were altered
         elif(databaseRunQuery("SELECT * FROM Directors WHERE age = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Directors SET age = \"" + updateto + "\" WHERE age = \"" + lookfor + "\"")
             print("Altered " + str(result) + " rows!")
                 
         #If inputted value exists in awards, alters rows
+        #and prints how many rows were altered
         elif(databaseRunQuery("SELECT * FROM Directors WHERE awards = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Directors SET awards = \"" + updateto + "\" WHERE awards = \"" + lookfor + "\"")
@@ -399,6 +402,7 @@ def update():
         lookfor = input("\nWhat value would you like to update? (any value in Movies)\n")
         
         #If inputted value exists in title, alters rows
+        #and prints how many rows were altered
         if(databaseRunQuery("SELECT * FROM Movies WHERE title = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Movies SET title = \"" + updateto + "\" WHERE title = \"" + lookfor + "\"")
@@ -406,12 +410,14 @@ def update():
 
                 
         #If inputted value exists in year, alters rows
+        #and prints how many rows were altered
         elif(databaseRunQuery("SELECT * FROM Movies WHERE year = \"" + lookfor + "\"")):
                 updateto = input("\nWhat value would you like it to update to? ")
                 result = databaseRunQuery("UPDATE Movies SET year = \"" + updateto + "\" WHERE year = \"" + lookfor + "\"")
                 print("Altered " + str(result) + " rows!")
                 
         #If inputted value exists in rating, alters rows
+        #and prints how many rows were altered
         elif(databaseRunQuery("SELECT * FROM Movies WHERE rating = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Movies SET rating = \"" + updateto + "\" WHERE rating = \"" + lookfor + "\"")
@@ -427,18 +433,21 @@ def update():
         lookfor = input("\nWhat value would you like to update? (any value in Actors)\n")
         
         #If inputted value exists in name, alters rows
+        #and prints how many rows were altered
         if(databaseRunQuery("SELECT * FROM Actors WHERE name = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Actors SET name = \"" + updateto + "\" WHERE name = \"" + lookfor + "\"")
             print("Altered " + str(result) + " rows!")
                 
         #If inputted value exists in age, alters rows
+        #and prints how many rows were altered
         elif(databaseRunQuery("SELECT * FROM Actors WHERE age = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Actors SET age = \"" + updateto + "\" WHERE age = \"" + lookfor + "\"")
             print("Altered " + str(result) + " rows!")
                 
         #If inputted value exists in gender, alters rows
+        #and prints how many rows were altered
         elif(databaseRunQuery("SELECT * FROM Actors WHERE gender = \"" + lookfor + "\"")):
             updateto = input("\nWhat value would you like it to update to? ")
             result = databaseRunQuery("UPDATE Actors SET gender = \"" + updateto + "\" WHERE gender = \"" + lookfor + "\"")
