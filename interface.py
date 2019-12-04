@@ -2,7 +2,7 @@
 
 #This program provides an interface that allows
 #its user to insert, delete,
-#lookup data, and update data
+#lookup, and update data
 #in a database by utilizing SQL queries
 
 #Authors:
@@ -174,10 +174,12 @@ def lookupOne():
     if ask_lookup == "Directors":
         lookup_directors = input("\nWhich entry do you want to look up in Directors? (Enter a name)\n")
         directors_tuple = databaseFetchOne("SELECT * FROM Directors WHERE name = " + "\'" + lookup_directors + "\'")
+        
         #If input not found in Directors, prints not found
         #otherwise prints the tuple of the input
         if directors_tuple == None:
             print(lookup_directors + " not found in Directors")
+            
         else:
             print("(name, age, awards)")
             print("(", directors_tuple[0], ",", directors_tuple[1], ",", directors_tuple[2], ")")
@@ -190,10 +192,12 @@ def lookupOne():
     if ask_lookup == "Movies":
         lookup_movies = input("\nWhich entry do you want to look up in Movies? (Enter a title)\n")
         movies_tuple = databaseFetchOne("SELECT * FROM Movies WHERE title = " + "\'" + lookup_movies + "\'")
+        
         #If input not found in Movies, prints not found
         #otherwise prints the tuple of the input
         if movies_tuple == None:
             print(lookup_movies + " not found in Movies")
+            
         else:
             print("(title, year, rating)")
             print("(", movies_tuple[0], ",", movies_tuple[1], ",", movies_tuple[2], ")")
@@ -205,10 +209,12 @@ def lookupOne():
     if ask_lookup== "Actors":
         lookup_actors = input("\nWhich entry do you want to look up in Actors? (Enter a name)\n")
         actors_tuple = databaseFetchOne("SELECT * FROM Actors WHERE name = " + "\'" + lookup_actors + "\'")
+        
         #If input not found in Actors, prints not found
         #otherwise prints the tuple of the input
         if actors_tuple == None:
             print(lookup_actors + " not found in Actors")
+            
         else:
             print("(name, age, gender)")
             print("(", actors_tuple[0], ",", actors_tuple[1], ",", actors_tuple[2], ")")
@@ -276,59 +282,66 @@ def delete():
     #and deletes tuples with inputted value
     if ask_table == "Directors":
         ask_delete_directors = input("\nWhat do you want to delete? (name, age, or awards)\n")
+        
         #If requested value to delete is name
         if ask_delete_directors == "name" or ask_delete_directors == "Name":
             director_value = input("Enter name to be deleted: ")
             delete_directors = databaseRunQuery("DELETE from Directors WHERE name = \"" + director_value + "\"")
             if(delete_directors == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")     
             else:
                 print("Deleted " + str(delete_directors) + " rows")
+                
         #If requested value to delete is age
         elif ask_delete_directors == "age" or ask_delete_directors == "Age":
             director_value = input("Enter age to be deleted: ")
             delete_directors = databaseRunQuery("DELETE from Directors WHERE age = \"" + director_value + "\"")
             if(delete_directors == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")     
             else:
                 print("Deleted " + str(delete_directors) + " rows")
+                
         #If requested value to delete is awards
         elif ask_delete_directors == "awards" or ask_delete_directors == "Awards":
             director_value = input("Enter award to be deleted: ")
             delete_directors = databaseRunQuery("DELETE from Directors WHERE awards = \"" + director_value + "\"")
             if(delete_directors == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")     
             else:
                 print("Deleted " + str(delete_directors) + " rows")
         else:
             print("\nFaulty input\n")
+            
     #If the table requested is Movies,
     #prompts user for value to delete
     #and deletes tuples with inputted value  
     elif ask_table == "Movies":
         ask_delete_movies = input("\nWhat do you want to delete? (title, year, or rating)\n")
+        
         #If requested value to delete is title
         if ask_delete_movies == "title" or ask_delete_movies == "Title":
             movie_value = input("Enter title to be deleted: ")
             delete_movies = databaseRunQuery("DELETE from Movies WHERE title = \"" + movie_value + "\"")
             if(delete_movies == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")      
             else:
                 print("Deleted " + str(delete_movies) + " rows")
+                
         #If requested value to delete is year
         elif ask_delete_movies == "year" or ask_delete_movies == "Year":
             movie_value = input("Enter year to be deleted: ")
             delete_movies = databaseRunQuery("DELETE from Movies WHERE year = \"" + movie_value + "\"")
             if(delete_movies == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")    
             else:
                 print("Deleted " + str(delete_movies) + " rows")
+                
         #If requested value to delete is rsting
         elif ask_delete_movies == "rating" or ask_delete_directors == "Rating":
             movie_value = input("Enter rating to be deleted: ")
             delete_movies = databaseRunQuery("DELETE from Movies WHERE rating = \"" + movie_value + "\"")
             if(delete_movies == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")      
             else:
                 print("Deleted " + str(delete_movies) + " rows")
         else:
@@ -339,28 +352,31 @@ def delete():
     #and deletes tuples with inputted value   
     elif ask_table == "Actors":
         ask_delete_actors = input("\nWhat do you want to delete? (name, age, or awards)\n")
+        
         #If requested value to delete is name
         if ask_delete_actors == "name" or ask_delete_actors == "Name":
             actor_value = input("Enter name to be deleted: ")
             delete_actors = databaseRunQuery("DELETE from Actors WHERE name = \"" + actor_value + "\"")
             if(delete_actors == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")    
             else:
                 print("Deleted " + str(delete_actors) + " rows")
+                
         #If requested value to delete is age
         elif ask_delete_actors == "age" or ask_delete_actors == "Age":
             actor_value = input("Enter age to be deleted: ")
             delete_actors = databaseRunQuery("DELETE from Actors WHERE age = \"" + actor_value + "\"")
             if(delete_actors == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")     
             else:
                 print("Deleted " + str(delete_actors) + " rows")
+                
         #If requested value to delete is gender
         elif ask_delete_actors == "gender" or ask_delete_actors == "Gender":
             actor_value = input("Enter gender to be deleted: ")
             delete_actors = databaseRunQuery("DELETE from Actors WHERE gender = \"" + actor_value + "\"")
             if(delete_actors == 0): 
-                print("Found nothing to delete")
+                print("Found nothing to delete")       
             else:
                 print("Deleted " + str(delete_actors) + " rows")
         else:
@@ -493,13 +509,14 @@ def deleteall():
     #and then deletes all its data
     if ask_table == "Directors":
         ask_delete_directors = input("\nDelete all data in Directors? (Enter Yes/Y for Yes or any other character for No)\n")
+        
         #If requested value to delete is name
         if ask_delete_directors == "Yes" or ask_delete_directors == "Y" or ask_delete_directors == "yes" or ask_delete_directors == "y":
             delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
             if delete_confirmation == "Yes" or delete_confirmation == "Y" or delete_confirmation == "yes" or delete_confirmation == "y":
                 delete_directors = databaseRunQuery("DELETE FROM Directors")
                 if(delete_directors == 0): 
-                    print("Found nothing to delete")
+                    print("Found nothing to delete")    
                 else:
                     print("Deleted data from Directors")
             else:
@@ -512,6 +529,7 @@ def deleteall():
     #and then deletes all its data 
     if ask_table == "Movies":
         ask_delete_movies = input("\nDelete all data in Movies? (Enter Yes/Y for Yes or any other character for No)\n")
+        
         #If requested value to delete is name
         if ask_delete_movies == "Yes" or ask_delete_movies == "Y" or ask_delete_movies == "yes" or ask_delete_movies == "y":
             delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
@@ -531,6 +549,7 @@ def deleteall():
     #and then deletes all its data   
     if ask_table == "Actors":
         ask_delete_actors = input("\nDelete all data in Actors? (Enter Yes/Y for Yes or any other character for No)\n")
+        
         #If requested value to delete is name
         if ask_delete_actors == "Yes" or ask_delete_actors == "Y" or ask_delete_actors == "yes" or ask_delete_actors == "y":
             delete_confirmation = input("\nAre you sure? (Enter Yes/Y for Yes or any other character for No)\n")
