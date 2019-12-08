@@ -5,13 +5,10 @@
 #lookup, and update data
 #in a database by utilizing SQL queries
 
-#Authors:
-#Aatika Shahid
-#Ivan Dolido
+#Author:
 #Jordan Sze
-#Laiqa Hussain
-#Qiwei Chen
-#Yudelis Paree
+
+#Professor Alvin Lam provided general template
 
 import pymysql
 
